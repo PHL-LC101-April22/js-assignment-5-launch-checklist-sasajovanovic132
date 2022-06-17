@@ -53,7 +53,7 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
 
        
        if ((validateInput(pilot.value) === 'Empty')|| (validateInput(copilot.value) === 'Empty')||(validateInput(fuelLevel.value) === 'Empty') || (validateInput(cargoLevel.value) === 'Empty')) {
-          alert("Please enter all information");
+          alert("Please enter info for all input fields");
           event.preventDefault();
        } else if (validateInput(fuelLevel.value)=== 'Not a Number' || validateInput(cargoLevel.value)=== 'Not a Number') {
           alert("Please Enter Valid Number");
@@ -96,15 +96,17 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
     let planetsReturned;
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
-        return response.json();
+     
+    return response.json();
+       
      });
-
+     console.log(planetsReturned); 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
-    const missionDestination = Math.round(Math.random()*5);
-    return planets[missionDestination];
+    const destination = Math.round(Math.random()*5);
+    return planets[destination];
 }
 
 
